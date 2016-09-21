@@ -1,0 +1,23 @@
+{
+  "name": "test-nodejs",
+  "version": "1.0.0",
+  "description": "this is a test nodejs project",
+  "main": "./lib/module.js",
+  "dependencies": {
+    "async": "^2.0.1",
+    "body-parser":"latest"
+  },
+  "devDependencies": {
+    "express": "4.14.0"
+  },
+  "scripts": {
+    "test": "\t"
+  },
+  "keywords": [
+    "npm",
+    "node",
+    "package"
+  ],
+  "author": "leo",
+  "license": "ISC"
+}
