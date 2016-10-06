@@ -1,0 +1,27 @@
+select * from  machine_state_hists
+select h1.*,
+(select min(h2.ts)-h1.ts from machine_state_hists h2 
+ where h2.item_id='841ce080-69de-11e6-9947-6f0a68fb63ff' 
+ and h2.ts > h1.ts 
+ and h2.ts < '2016-10-06 07:20') end_ts,
+ (select max(ts) from machine_state_hists where item_id='841ce080-69de-11e6-9947-6f0a68fb63ff' and ts <'2016-10-05 07:20' ) exDay
+from machine_state_hists h1 where h1.item_id='841ce080-69de-11e6-9947-6f0a68fb63ff' and h1.ts >='2016-10-05 07:20' and h1.ts <='2016-10-06 07:20'
+
+select * from machine_state_hists where  item_id='841ce080-69de-11e6-9947-6f0a68fb63ff' and ts =
+(select max(ts) from machine_state_hists where item_id='841ce080-69de-11e6-9947-6f0a68fb63ff' and ts <'2016-10-05 07:20' )
+
+--create  extension  "uuid-ossp"
+insert into machine_state_hists values (
+uuid_generate_v1(),'841ce080-69de-11e6-9947-6f0a68fb63ff',0,'¨Ï¥Î',uuid_generate_v1(),'2016-10-04 07:28:00'
+)
+delete from machine_state_hists where ts<'2016-10-05 07:20'
+
+select * from steps
+
+select to_char(current_timestamp,'HH12:MI:MS')
+
+
+
+select h1.*,
+(select min(h2.ts) from machine_state_hists h2 where h2.item_id=$item_id and h2.ts > h1.ts and h2.ts < $end_ts) end_ts 
+from machine_state_hists h1 where h1.item_id=$item_id and h1.ts >= $start_ts and h1.ts <=$end_ts
