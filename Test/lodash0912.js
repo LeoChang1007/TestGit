@@ -10,7 +10,7 @@ var charsRightIndex = require('lodash._charsrightindex');
 //callback
 
 var getreduce=function(cb) {
-    var cnt=3;
+    var cnt=2;
     _.reduce({'a': 1, 'b': 2, 'c': 1}, function (result, value, key) {
         (result[value] || (result[value] = [])).push(key);
         if(--cnt==0) cb(result);
@@ -19,6 +19,9 @@ var getreduce=function(cb) {
 }
 
 getreduce(function(val){console.log(val)});
+var a={};
+a[1]=3;
+console.log(a);
 
 //promise
 // var getreduce=function() {
@@ -33,7 +36,7 @@ getreduce(function(val){console.log(val)});
 // }
 //
 // getreduce().then(function(val){console.log(val)});
-
+/*
 console.log(_.chunk(['a', 'b', 'c', 'd'], 3));
 
 
@@ -44,6 +47,7 @@ var users = [
 ];
 
 console.log( _.dropRightWhile(users, { 'user': 'barney', 'active': false }));
+
 
 
 var strTrim="AND AND AND bc AND";
@@ -68,4 +72,27 @@ var str = "aapples are rounds , and apples are juicy.";
 var re=/\bap/
 console.log(str.match(re))
 
-setTimeout(function(){console.log("alert")},3000)
+setTimeout(function(){console.log("alert")},3000)*/
+var a=[
+    {
+        "name": "jim",
+        "color": "blue",
+        "age": "22"
+    },
+    {
+        "name": "Sam",
+        "color": "blue",
+        "age": "33"
+    },
+    {
+        "name": "eddie",
+        "color": "green",
+        "age": "77"
+    }
+];
+console.log(_.chain(a).groupBy('color').value());
+console.log(_.chain(a).groupBy('color').toPairs().value());
+console.log(_.chain(a).groupBy('color').toPairs().map(function(input){
+    return (_.zipObject(["color", "users"], input));
+}).value());
+console.log(_.zipObject(['a','b'],[1,2],[true,false]));

@@ -6,10 +6,10 @@ var pg = require('pg');
 
 var config = {
     user: 'postgres', //env var: PGUSER
-    database: 'alpha-mes-dev', //env var: PGDATABASE
-    password: 'postgres', //env var: PGPASSWORD
-    host:'192.168.0.50',
-    port: 5432, //env var: PGPORT
+    database: 'alpha-mes-bk', //env var: PGDATABASE
+    password: '', //env var: PGPASSWORD
+    host:'192.168.0.162',
+    port: 5440, //env var: PGPORT
     max: 10, // max number of clients in the pool
     idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
 };
